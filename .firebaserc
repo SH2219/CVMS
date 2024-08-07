@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "cvms-10c0b",
+    "cvms": "cvms-10c0b"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

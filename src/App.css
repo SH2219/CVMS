@@ -1,0 +1,51 @@
+/* Import the font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth; /* Enable smooth scrolling for the entire page */
+}
+
+/* Example of applying Poppins to specific elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Ensure the entire document has smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* styles.css */
+.bg {
+    background: 
+      linear-gradient(90deg, rgba(79, 70, 229, 0.8), rgba(59, 130, 246, 0.8), rgba(14, 165, 233, 0.8)), 
+      url('/public/bg.jpg'); /* Replace 'your-image-url.jpg' with the path to your image */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the background image */
+    color: white; /* Ensure text is readable on the gradient */
+    ; /* Ensure full width */
+    padding: 1rem; /* Add padding for spacing */
+    text-align: center; /* Center text */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+  }
+  
+.black1{
+ background-color: #131313 ;  
+}
+.black2{
+ background-color: #0c0c0c ;  
+}
+.Zindex{
+ z-index: 19999999 !important;
+}
+
+.buttonBg{
+  background-color: #f4a743;
+  transition: all 100ms ease-in;
+} 
+.buttonBg:hover{
+  background-color: #f7b764;
+} 
+
