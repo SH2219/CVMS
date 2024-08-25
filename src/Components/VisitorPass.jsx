@@ -106,12 +106,12 @@ const VisitorPass = () => {
               <p><strong>Department:</strong> {selectedVisitor.department}</p>
               <p><strong>Timestamp:</strong> {new Date(selectedVisitor.timestamp.seconds * 1000).toLocaleString()}</p>
             </div>
-            <button
+            {/* <button
               onClick={handlePrint}
               className="bg-blue-500 text-white p-2 rounded mt-4 w-full sm:w-auto"
             >
               Print Pass
-            </button>
+            </button> */}
           </div>
         )}
       </div>
