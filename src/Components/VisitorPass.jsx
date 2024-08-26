@@ -48,19 +48,18 @@ const VisitorPass = () => {
     toast.info(`Pass generated for ${visitor.name}`);
   };
 
+  const calculateExpiryDate = (timestamp) => {
+    const expiryDate = new Date(timestamp.seconds * 1000);
+    expiryDate.setHours(expiryDate.getHours() + 2); // Set the pass to expire in 2 hours
+    return expiryDate;
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
     <>
-      {/* <div className="relative bg-stone-800 h-16 ml-100 lg:ml-0 p-4 lg:w-full">
-        <h1 className="lg:text-2xl hidden lg:inline font-bold text-white">Visitor Pass</h1>
-        <div className="absolute top-0 right-0 flex items-center space-x-12 pr-52 lg:pr-56">
-          <Search />
-          <Admin />
-        </div>
-      </div> */}
       <div className="flex flex-col items-center ml-100 lg:ml-0 pt-20  w-full p-4">
         <div className="lg:w-full w-80 ml-32 lg:ml-0 max-w-5xl mb-8  bg-white shadow-lg border border-gray-300 rounded-2xl p-6">
           <h1 className="text-2xl font-bold mb-4 ">Visitor Pass Management</h1>
@@ -105,6 +104,7 @@ const VisitorPass = () => {
               <p><strong>Purpose:</strong> {selectedVisitor.purpose}</p>
               <p><strong>Department:</strong> {selectedVisitor.department}</p>
               <p><strong>Timestamp:</strong> {new Date(selectedVisitor.timestamp.seconds * 1000).toLocaleString()}</p>
+              <p><strong>Expiry:</strong> {calculateExpiryDate(selectedVisitor.timestamp).toLocaleString()}</p>
             </div>
             <button
               onClick={handlePrint}
