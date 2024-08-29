@@ -11,6 +11,8 @@ import { db, auth } from "../FirebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import Admin from "./Admin";
 import Search from "./Search";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ADMIN_EMAILS = [
   "admin@example.com",
@@ -53,6 +55,7 @@ const Department = () => {
       }));
       setDepartments(departmentsData);
     } catch (error) {
+      toast.error("Error fetching departments");
       console.error("Error fetching departments:", error);
     }
   };
@@ -61,7 +64,7 @@ const Department = () => {
     e.preventDefault();
 
     if (departmentName.trim() === "") {
-      alert("Please enter a department name");
+      toast.warn("Please enter a department name");
       return;
     }
 
@@ -70,12 +73,12 @@ const Department = () => {
         name: departmentName,
         createdAt: new Date(),
       });
-      alert("Department added successfully");
+      toast.success("Department added successfully");
       setDepartmentName("");
       fetchDepartments();
     } catch (error) {
       console.error("Error adding department:", error);
-      alert("Failed to add department");
+      toast.error("Failed to add department");
     }
   };
 
@@ -83,7 +86,7 @@ const Department = () => {
     e.preventDefault();
 
     if (currentDepartment.name.trim() === "") {
-      alert("Please enter a department name");
+      toast.warn("Please enter a department name");
       return;
     }
 
@@ -92,24 +95,24 @@ const Department = () => {
       await updateDoc(departmentRef, {
         name: currentDepartment.name,
       });
-      alert("Department updated successfully");
+      toast.success("Department updated successfully");
       setEditing(false);
       setCurrentDepartment({ id: null, name: "" });
       fetchDepartments();
     } catch (error) {
       console.error("Error updating department:", error);
-      alert("Failed to update department");
+      toast.error("Failed to update department");
     }
   };
 
   const handleDeleteDepartment = async (id) => {
     try {
       await deleteDoc(doc(db, "departments", id));
-      alert("Department deleted successfully");
+      toast.success("Department deleted successfully");
       fetchDepartments();
     } catch (error) {
       console.error("Error deleting department:", error);
-      alert("Failed to delete department");
+      toast.error("Failed to delete department");
     }
   };
 
@@ -120,13 +123,8 @@ const Department = () => {
 
   return (
     <>
-      {/* <div className="relative ml-100 lg:ml-0 bg-stone-800 h-16 p-4 lg:w-full">
-        <h1 className="text-2xl font-bold text-white hidden lg:inline-block">Department</h1>
-        <div className="absolute top-0 right-0 flex items-center space-x-4 pr-4">
-          <Search />
-          <Admin />
-        </div>
-      </div> */}
+      {/* Toastify Container */}
+      <ToastContainer />
       <div className="container w-80 lg:w-full mt-12 px-4 lg:ml-0 ml-100 lg:mx-auto">
         {isAdmin && (
           <section className="mb-8 p-10 w-80 lg:w-full ml-8 lg:ml-0 bg-white shadow-lg border rounded-2xl border-gray-300">
